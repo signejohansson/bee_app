@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //activity 2 = shaking
+        //button that leads to the shaking activity
         Button btn2 = (Button)findViewById(R.id.btn2);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //activity 3 = accelerometer
+        //button that leads to the activity that shows accelerometer data
         Button btn1 = (Button)findViewById(R.id.btn1);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override

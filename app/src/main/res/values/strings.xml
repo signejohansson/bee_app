@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Hello Sensor</string>
+    <string name="light_level_format">Current light level: %.2f lx</string>
 </resources>

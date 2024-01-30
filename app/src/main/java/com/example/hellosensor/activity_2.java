@@ -8,12 +8,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.widget.Toast;
-
+import android.media.MediaPlayer;
 import android.os.Vibrator;
 
-import android.os.Vibrator;
-import android.widget.ImageView;
 
 public class activity_2 extends AppCompatActivity implements SensorEventListener {
 
@@ -25,8 +22,7 @@ public class activity_2 extends AppCompatActivity implements SensorEventListener
     private float last_z;
     private static final int SHAKE_THRESHOLD = 600;
     private Vibrator vibrator;
-    private ImageView imageView;
-    private boolean isImageChanged = false;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +32,20 @@ public class activity_2 extends AppCompatActivity implements SensorEventListener
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        imageView = findViewById(R.id.imageView);
-        setInitialImage();
+        mediaPlayer = MediaPlayer.create(this, R.raw.bee); //sound effect
     }
 
-    private void setInitialImage() {
-        //set image based on state
-        int imageResource = isImageChanged ? R.drawable.angry : R.drawable.happy;
-        imageView.setImageResource(imageResource);
+    @Override
+    protected void onDestroy() {
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        super.onDestroy();
     }
 
-    // Detects shake gesture
+    //detects a shake gesture
     @Override
     public void onSensorChanged(SensorEvent event) {
         Sensor mySensor = event.sensor;
@@ -66,16 +63,10 @@ public class activity_2 extends AppCompatActivity implements SensorEventListener
                 if (speed > SHAKE_THRESHOLD) {
                     //vibrate for 500 milliseconds
                     vibrator.vibrate(500);
-
-                    //update image only if it has not recently been changed
-                    if (!isImageChanged) {
-                        isImageChanged = true;
-                        setInitialImage();
+                    //play the sound effect
+                    if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
+                        mediaPlayer.start();
                     }
-                    //toggle the image state
-                    //isImageChanged = !isImageChanged;
-                    //update imageView
-                    //setInitialImage();
                 }
                 last_x = x;
                 last_y = y;
