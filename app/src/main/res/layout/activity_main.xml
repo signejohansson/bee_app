@@ -34,7 +34,7 @@
         android:id="@+id/btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Shake activity"
+        android:text="Shake and tilt activity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,13 +58,13 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is my Hello Sensor app :)"
+        android:text="This is my Hello Sensor app"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/backgroundImageView"
         app:layout_constraintEnd_toEndOf="@+id/backgroundImageView"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/backgroundImageView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306"
-        android:textSize="15sp" />
+        app:layout_constraintVertical_bias="0.306" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
