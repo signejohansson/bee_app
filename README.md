@@ -6,4 +6,6 @@ It contains two activities:
 
 In the second activity you can also move an image of a bee around by tilting the phone.
 
-<img src="app/src/main/res/drawable/page_3.png" height="300">
+<img src="app/src/main/res/drawable/page_3.png" height="300"> <img src="app/src/main/res/drawable/page_2.png" height="300">
+
+The accelerometer data and current light level is displayed on the sun and inside the cloud when you run the app. 
